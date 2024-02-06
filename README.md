@@ -1,0 +1,1 @@
+# django_Stakewolle_test_work
