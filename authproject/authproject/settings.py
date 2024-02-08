@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from config.config import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,9 +77,17 @@ WSGI_APPLICATION = 'authproject.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': f'django.db.backends.{config.PSQL_ENGINE}',
+        'NAME': config.PSQL_NAME,
+        'USER': config.PSQL_USER,
+        'PASSWORD': config.PSQL_PASSWORD,
+        'HOST': config.PSQL_HOST,
+        'PORT': config.PSQL_PORT,
+    },
+    'cache': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'NAME': ':memory:',
+    },
 }
 
 

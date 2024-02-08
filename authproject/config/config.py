@@ -1,0 +1,23 @@
+import os
+from pydantic_settings import BaseSettings
+
+if not os.environ.get("ENV_LOADED"):
+    if os.path.isfile('.env'):
+        from dotenv import load_dotenv
+        load_dotenv()
+        os.environ["ENV_LOADED"] = "True"
+        print('Loading environment variables from .env')
+    else:
+        print("No .env file found. Using system environment variables.")
+
+
+class Config(BaseSettings):
+    
+    PSQL_ENGINE: str
+    PSQL_NAME: str
+    PSQL_USER: str
+    PSQL_PASSWORD: str
+    PSQL_HOST: str
+    PSQL_PORT: str
+    
+config = Config()
