@@ -13,11 +13,16 @@ if not os.environ.get("ENV_LOADED"):
 
 class Config(BaseSettings):
     
+    # General settings
+    TIME_ZONE: str
+    
+    # PostgreSQL
     PSQL_ENGINE: str
     PSQL_NAME: str
     PSQL_USER: str
     PSQL_PASSWORD: str
     PSQL_HOST: str
     PSQL_PORT: str
+    
     
 config = Config()
