@@ -14,7 +14,7 @@ class User(models.Model):
         default='xxx@yyy.zzz'
     )
     date_registration = models.DateTimeField(
-        'date of registration', 
+        verbose_name='date of registration', 
         default=timezone.now
     )
     
