@@ -16,6 +16,7 @@
 }
 
 body {
+    height: 100%;
     display: flex;
     gap: 5px;
     flex-direction: column;
@@ -28,7 +29,8 @@ body {
 
 header, main {
     width: 70%;
-    min-width: 240px;
+    min-width: 400px;
+    /* min-width: 240px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,6 +41,11 @@ header, main {
     border-radius: 10px;
 }
 
+main {
+    height: 100vh;
+    align-items: start;
+}
+
 input {
     height: 35px;
     width: 70%;
@@ -46,6 +53,7 @@ input {
     border: none;
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
+    text-align: center;
     font-size: 18px;
     font-weight: 400;
     line-height: 18px;
@@ -58,23 +66,39 @@ input {
     width: 70%;    
 }
 
-.submit-login {
+.submit-login, .login-register {
     height: 45px;
+    line-height: 45px;
+    text-decoration: none;
     width: 50%;
-    margin-bottom: 10px;
+    min-width: 240px;
     border: none;
     border-radius: 10px;
     background-color: var(--main-bg-color);
     color: var(--h1-color);
     font-size: 18px;
+    font-weight: bold;
 }
 
-.submit-login:hover {
+.submit-login:hover, .login-register:hover {
     background-color: var(--nav-btn-hover-bg-color);
     color: var(--nav-a-hover-color);
 }
 
-.submit-login:active {
+.submit-login:active, .login-register:active {
     background-color: var(--nav-btn-active-bg-color);
     color: var(--nav-a-active-color);
+}
+
+.index-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    width: 70%;
+}
+
+.login-register {
+    padding: 5px 10px 5px 10px;
 }

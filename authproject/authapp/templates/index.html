@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block page_title %}
+{{ page_title }}
+{% endblock page_title %}
+
+{% block content %}
+    <div class="index-wrapper">
+        <h3>You can</h3>
+        <a class="login-register" href="{% url 'login' %}">Login</a>
+        <h3>or</h3>
+        <a class="login-register" href="{% url 'login' %}">Register</a>
+    </div>
+{% endblock %}

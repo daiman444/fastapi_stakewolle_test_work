@@ -4,7 +4,8 @@ from . import views
 urlpatterns = [
     path(
       route='',
-      view=view  
+      view=views.index,
+      name='index',  
     ),
     path(
         route='login/',

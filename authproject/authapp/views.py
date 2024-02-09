@@ -12,6 +12,9 @@ def index(request: HttpRequest):
     return render(
         request=request,
         template_name="index.html",
+        context={
+            "page_title": "Index"
+        }
     )
 
 
@@ -36,7 +39,7 @@ def user_login(request: HttpRequest):
         request=request,
         template_name="login.html",
         context={
-            "title": "Login",
+            "page_title": "Login",
             "form": form,
         }
     )
