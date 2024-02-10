@@ -37,12 +37,12 @@ Readme.md файл с описанием проекта и инструкция�
 Приведен список переменных .env/окружения. Больщинство переменных Django должны передаваться как строки. Например, чтобы указать порт для PostgreSQL его надо передать как строку: PSQL_PORT='5432'
 
         # General settings
-        TIME_ZONE=
+        TIME_ZONE="Asia/Almaty"
 
         # PostgreSQL
-        PSQL_ENGINE=
-        PSQL_NAME=
-        PSQL_USER=
-        PSQL_PASSWORD=
-        PSQL_HOST=
-        PSQL_PORT=
+        PSQL_ENGINE=postgresql
+        PSQL_NAME=stakewolle
+        PSQL_USER=psqlusername
+        PSQL_PASSWORD=psqlpassword
+        PSQL_HOST=localhost
+        PSQL_PORT="5432"
