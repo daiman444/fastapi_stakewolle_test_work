@@ -1,12 +1,12 @@
 from django.contrib.auth.forms import UserCreationForm
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpRequest, HttpResponse
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import LoginForm
 
-# Create your views here.
 
 def index(request: HttpRequest):
     return render(
@@ -27,7 +27,10 @@ def user_login(request: HttpRequest):
             if user is not None:
                 if user.is_active:
                     login(request=request, user=user)
-                    return HttpResponse("Authentificated successfully")
+                    return redirect(
+                        to="index",
+                    )
+                    #return HttpResponse("Authentificated successfully")
                 else:
                     return HttpResponse("Disabled account")
             else:
@@ -43,3 +46,9 @@ def user_login(request: HttpRequest):
             "form": form,
         }
     )
+    
+
+def logout(request: HttpResponse):
+    logout(request=request)
+    return
+    

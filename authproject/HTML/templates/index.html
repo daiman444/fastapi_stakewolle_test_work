@@ -4,10 +4,14 @@
 {% endblock page_title %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <h1> Some content</h1>
+    {% else %}
     <div class="index-wrapper">
         <h3>You can</h3>
         <a class="login-register" href="{% url 'login' %}">Login</a>
         <h3>or</h3>
         <a class="login-register" href="{% url 'login' %}">Register</a>
     </div>
+    {% endif %}
 {% endblock %}
