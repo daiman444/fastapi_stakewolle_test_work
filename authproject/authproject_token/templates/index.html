@@ -5,11 +5,10 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <h1> Some content</h1>
         {% if token %}
-            <p>{{ token }}</p>
+        <h1>{{ token }}</h1>
         {% else %}
-            <p>No tokens</p>
+            <h1>No active tokens</h1>
         {% endif %}
     {% else %}
     <div class="index-wrapper">
