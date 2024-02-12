@@ -14,6 +14,13 @@
     <body>
         <header>
             <h1 class="page-title">{% block page_title %}Default title{% endblock page_title %}</h1>
+            {% if links %}
+            <ul>
+                {% for link in links %}
+                <li><a>{{ link }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endif %}
         </header>
         <main>
             {% block content %}<h1>Default title</h1>{% endblock %}

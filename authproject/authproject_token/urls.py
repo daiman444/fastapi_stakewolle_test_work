@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     path(
         route="",
-        view=views.index,
+        view=views.IndexView.as_view(),
         name="index",
     ),
     path(

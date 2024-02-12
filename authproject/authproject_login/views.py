@@ -11,7 +11,11 @@ from .forms import LoginForm
 
 
 def login_user(request: HttpRequest):
-    if request.method == "POST":
+    if request.user.is_authenticated:
+        return redirect(
+                        to="index",
+                    )
+    elif request.method == "POST" :
         form = LoginForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data

@@ -6,6 +6,11 @@
 {% block content %}
     {% if user.is_authenticated %}
         <h1> Some content</h1>
+        {% if token %}
+            <p>{{ token }}</p>
+        {% else %}
+            <p>No tokens</p>
+        {% endif %}
     {% else %}
     <div class="index-wrapper">
         <h3>You can</h3>
