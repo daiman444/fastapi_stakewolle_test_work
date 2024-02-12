@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class AuthappConfig(AppConfig):
+class AuthprojectLoginConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'authapp'
+    name = 'authproject_login'
