@@ -14,11 +14,19 @@
     <body>
         <header>
             <h1>AuthApp</h1>
-            {% if links %}
             <ul>
+                {% if links %}
                 {% for key, value in links.items %}
                 <li><a href="{% url key %}">{{ value }}</a></li>
                 {% endfor %}
+                {% if user.is_authenticated %}
+                <li>
+                    <form action="{% url 'logout_user' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">LogOut</button>
+                    </form>
+                </li>
+                {% endif %}
             </ul>
             {% endif %}
         </header>

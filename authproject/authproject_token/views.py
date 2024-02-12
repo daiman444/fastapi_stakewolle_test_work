@@ -1,6 +1,6 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpRequest, HttpResponse
 from django.views import generic
 from .models import Token
@@ -15,22 +15,34 @@ class IndexView(generic.ListView):
     
     def get_queryset(self) -> QuerySet[Any]:
         if self.request.user.is_authenticated:
-            token = Token.objects.filter(active=True)
-            return token
+            active_tokens = Token.objects.filter(active=True)
+            for token in active_tokens:
+                if not token.token_is_alive():
+                    token.active = False
+                    token.save()
+            if not token.token_is_alive():
+                return token
+            else:
+                return None
             
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['links'] = {
-            "signin": "Sign In/",
-            "signup": "Sign Up"
-            
-        }
+        if self.request.user.is_authenticated:
+            context["token"] = self.get_queryset()
+            context['links'] = {
+                "create_token": "CreateToken",                
+            }
+        else:
+            context['links'] = {
+                "signin": "SignIn",
+                "signup": "SignUp"
+            }
         return context
 
 
-def show_token(request: HttpRequest):
-    return HttpResponse("Your Tokens")
+# class ShowTokenView(generic.ListView):
+#     return HttpResponse("Your Tokens")
 
 
 def create_token(request: HttpRequest):

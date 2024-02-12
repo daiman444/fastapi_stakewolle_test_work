@@ -8,13 +8,13 @@ urlpatterns = [
         view=views.IndexView.as_view(),
         name="index",
     ),
+    # path(
+    #     route="show_token",
+    #     view=views.show_token,
+    #     name="show_token",
+    # ),
     path(
-        route="show_token/",
-        view=views.show_token,
-        name="show_token",
-    ),
-    path(
-        route="create_token/",
+        route="create_token",
         view=views.create_token,
         name="create_token",
     ),

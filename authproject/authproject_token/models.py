@@ -10,7 +10,7 @@ from django.utils import timezone
 
 class Token(models.Model):
     referor = models.ForeignKey(User, on_delete=models.CASCADE, related_name="token_referor")
-    referree = models.ForeignKey(User, on_delete=models.CASCADE, related_name="token_referree")
+    referree = models.ForeignKey(User, on_delete=models.CASCADE, related_name="token_referree", null=True, blank=True)
     
     token = models.CharField(max_length=32)
     active = models.BooleanField(default=True)
@@ -21,3 +21,6 @@ class Token(models.Model):
         now = timezone.now()
         is_alive = now - self.create_date < timedelta(minutes=self.live_time)
         return is_alive
+    
+    def __str__(self):
+        return f"{self.referor}-{self.referree}-{self.active}"
