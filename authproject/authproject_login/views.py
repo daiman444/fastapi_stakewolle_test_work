@@ -10,7 +10,7 @@ from .forms import LoginForm
 # Create your views here.
 
 
-def login_user(request: HttpRequest):
+def signin(request: HttpRequest):
     if request.user.is_authenticated:
         return redirect(
                         to="index",

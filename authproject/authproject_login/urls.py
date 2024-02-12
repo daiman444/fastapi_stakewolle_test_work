@@ -4,9 +4,9 @@ from . import views
 
 urlpatterns = [
     path(
-        route="",
-        view=views.login_user,
-        name="login_user",
+        route="signin",
+        view=views.signin,
+        name="signin",
     ),
     path(
         route="check_token",
@@ -14,9 +14,9 @@ urlpatterns = [
         name="check_token",
     ),
     path(
-        route="registration_user",
+        route="signup",
         view=views.registration_user,
-        name="registration_user",
+        name="signup",
     ),
     path(
         route="logout_user",
