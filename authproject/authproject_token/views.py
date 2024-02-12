@@ -21,29 +21,12 @@ class IndexView(generic.ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['page_title'] = 'Index'
         context['links'] = {
             "signin": "Sign In/",
             "signup": "Sign Up"
             
         }
         return context
-    
-    
-    
-    # if request.user.is_authenticated:
-    #     token = Token.objects.filter(active=True)
-    #     if not token.token_is_alive:
-            
-    #     return render(
-    #         request=request,
-    #         template_name="index.html",
-    #         context={
-    #             "page_title": "Index",
-    #         }
-    #     )
-    # else:
-    #     return HttpResponse("Login/Registration")
 
 
 def show_token(request: HttpRequest):
