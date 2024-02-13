@@ -6,7 +6,16 @@
 {% block content %}
     {% if user.is_authenticated %}
         {% if token %}
-        <h1>{{ token }}</h1>
+            <table class="token">
+                <tr>
+                    <th>Token</th>
+                    <th>Create Date</th>
+                </tr>
+                <tr>
+                    <td>{{token.token}}</td>
+                    <td>{{token.create_date}}</td>
+                </tr>
+            </table>
         {% else %}
             <h1>No active tokens</h1>
         {% endif %}

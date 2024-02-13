@@ -15,15 +15,16 @@ class IndexView(generic.ListView):
     
     def get_queryset(self) -> QuerySet[Any]:
         if self.request.user.is_authenticated:
-            active_tokens = Token.objects.filter(active=True)
-            for token in active_tokens:
-                if not token.token_is_alive():
+            token = Token.objects.filter(active=True).first()
+            if token: 
+                if token.token_is_alive():
+                    return token
+                else:
                     token.active = False
                     token.save()
-            if not token.token_is_alive():
-                return token
-            else:
-                return None
+                    return None
+
+            
             
     
     def get_context_data(self, **kwargs):
