@@ -1,4 +1,6 @@
-from fastapi import FastAPI, Request, Cookie
+from datetime import datetime
+
+from fastapi import FastAPI, Response, Request, Cookie, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
@@ -9,7 +11,14 @@ from api.schemas.models import User, Feedback
 app = FastAPI()
 template = Jinja2Templates(directory="public/templates")
 
-feedback_list = []
+
+user_data = User(
+    id=2,
+    name="Vasyan",
+    password=123,
+    age=20
+)
+
 
 @app.get("/", response_class=HTMLResponse)
 async def root(request: Request):
@@ -17,25 +26,37 @@ async def root(request: Request):
     return template.TemplateResponse("index.html", {"request": request})
 
 
-@app.get("/calculate",)
-async def root(request: Request, num1: int, num2: int ):
-    # return {"message": "Hello World"}
-    result = num1 + num2
-    return {"result": result}
-
-
-@app.post("/user",)
-async def root(user: User):
-    user_data = user.model_dump()
-    if user.age > 18:
-        user_data["is_adult"] = True
+@app.get("/login")
+async def login(response: Response, usermane: str, userpassword: int):
+    if usermane == user_data.name:
+        if userpassword == user_data.password:
+            now = datetime.now().strftime("%d/%m/%Y, %H:%M:%S")
+            response.set_cookie(key="set_time", value=now)
+            return {"message": "coockies are set"}
+        else:
+            return {"message": "invelid passowrd"}
     else:
-        user_data["is_adult"] = False    
-    return {"user_data": user_data}
+        return {"message": "user is not found"}
+        
 
 
-@app.post("/feedback",)
-async def root(feedback: Feedback):
-    feedback_list.append(feedback)
-    print(feedback_list)
-    return {"message": "Feedback received"}
+@app.get("/user")
+async def user(set_time = Cookie(default=None)):
+    if set_time is None:
+        HTTPException(status_code=401, detail="you needed to signin or signup")
+    else:
+        user_info = {
+            "user id": user_data.id,
+            "user name": user_data.name,
+            "user age": user_data.age,
+        }
+        return {
+            "user info": user_info,
+            "set_time": set_time,
+        }
+    
+    
+@app.post("/signout", status_code=204)
+async def logout(response: Response):
+    response.delete_cookie("set_time")
+    return {"message": "you have left the session"}
