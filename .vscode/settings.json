@@ -6,9 +6,11 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "__pycache__": true
+        "__pycache__": true,
+        "authapp/__pycache__": true
     },
     "hide-files.files": [
-        "__pycache__"
+        "__pycache__",
+        "authapp/__pycache__"
     ]
 }
