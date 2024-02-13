@@ -4,7 +4,6 @@
 {% endblock page_title %}
 
 {% block content %}
-    {% if user.is_authenticated %}
         {% if token %}
             <table class="token">
                 <tr>
@@ -19,9 +18,7 @@
         {% else %}
             <h1>No active tokens</h1>
         {% endif %}
-    {% else %}
     <div class="index-wrapper">
         <h1>Application for creating referral links</h1>
     </div>
-    {% endif %}
 {% endblock %}

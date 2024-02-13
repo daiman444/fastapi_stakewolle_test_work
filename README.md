@@ -32,3 +32,16 @@ Readme.md файл с описанием проекта и инструкция�
 - [Design](https://pixso.net/app/editor/-MdRp36PScUQrriU4yWAew?showQuickFrame=true&icon_type=1&page-id=0%3A1)
 - [Logic circuit](https://miro.com/app/board/uXjVNvKL4oA=/)
 
+
+# Running
+
+    $ python3 -m venv venv
+    $ source venv/bin/activate
+    $ pip3 install -r requirements.txt
+    $ cd aothapp
+    $ uvicorn main:app --reload
+
+# .env
+
+    # путь по умолчанию для запросов к приложению: domain:port/APP_PATH
+    APP_PATH=fastapi 
