@@ -7,10 +7,20 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
         "__pycache__": true,
-        "authapp/__pycache__": true
+        "authapp/__pycache__": true,
+        "authapp/api/schemas/__pycache__/__init__.cpython-311.pyc": true,
+        "authapp/api/schemas/__pycache__/settings.cpython-311.pyc": true,
+        "authapp/api/schemas/__pycache__": true,
+        "authapp/api/__pycache__": true,
+        "venv": true
     },
     "hide-files.files": [
         "__pycache__",
-        "authapp/__pycache__"
+        "authapp/__pycache__",
+        "authapp/api/schemas/__pycache__/__init__.cpython-311.pyc",
+        "authapp/api/schemas/__pycache__/settings.cpython-311.pyc",
+        "authapp/api/schemas/__pycache__",
+        "authapp/api/__pycache__",
+        "venv"
     ]
 }
