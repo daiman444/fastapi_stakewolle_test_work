@@ -8,7 +8,7 @@ from api.schemas.settings import settings
 
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="public/templates"))
+app.mount("/static", StaticFiles(directory="public/templates", html=True))
 
 
 @app.get(f"/{settings.APP_PATH}")

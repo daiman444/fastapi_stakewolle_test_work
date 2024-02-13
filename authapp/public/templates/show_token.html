@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block page_title %}
+{{ page_title }}
+{% endblock page_title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>No active tokens</h1>
+    {% endif %}
+{% endblock %}
