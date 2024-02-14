@@ -3,7 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 from sqlalchemy import (
     Column, Integer, String, 
-    ForeignKey, DateTime, Boolean
+    ForeignKey, DateTime, Boolean,
+    Text
 )
 from sqlalchemy.orm import DeclarativeBase, relationship
 
@@ -26,10 +27,11 @@ class Users(Base):
     email = Column(String(32),
                    nullable=False,
                    unique=True)
-    pass_hash = Column(String(16),
+    pass_hash = Column(Text,
                        nullable=False,
                        unique=True)
-    tokens = relationship("Token", back_populates="owner")
+    tokens = relationship("Token", 
+                          back_populates="owner",)
     
     def set_pass_hash(self, password: str):
         self.pass_hash = generate_password_hash(password=password)
