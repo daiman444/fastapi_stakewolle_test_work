@@ -29,7 +29,7 @@ class UserRepo(UserRepoInterface):
                 await redis_app.set(f"id:{user_data.id}", pickle.dumps(user_data))
                 return True
             except Exception as e:
-                print(e)
+                print(e)               
                 return False
             
             
