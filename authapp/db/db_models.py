@@ -12,8 +12,8 @@ class Base(DeclarativeBase):
     pass
 
 
-class User(Base):
-    __tablename__ = "user"
+class Users(Base):
+    __tablename__ = "users"
     
     id = Column(Integer, 
                 primary_key=True, 
@@ -54,9 +54,9 @@ class Token(Base):
                        unique=False,
                        default=False)
     owner_id = Column(Integer, 
-                      ForeignKey("user.id",),
+                      ForeignKey("users.id",),
                       nullable=False)
-    owner = relationship("User",
+    owner = relationship("Users",
                          back_populates="tokens")
     
     def token_is_alive(self):
