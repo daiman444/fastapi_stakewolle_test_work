@@ -1,11 +1,8 @@
-from datetime import datetime
-from typing import Annotated
-
 from fastapi import FastAPI, Response, Request, Header
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
-from api.schemas.models import User, Feedback
+from authapp.api.schemas.pd_models import User, Token
 
 
 app = FastAPI()
