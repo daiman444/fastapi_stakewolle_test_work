@@ -23,6 +23,9 @@ class Users(Base):
     login = Column(String(32),
                    nullable=False,
                    unique=True)
+    email = Column(String(32),
+                   nullable=False,
+                   unique=True)
     pass_hash = Column(String(16),
                        nullable=False,
                        unique=True)
