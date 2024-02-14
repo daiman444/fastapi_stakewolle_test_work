@@ -43,5 +43,17 @@ Readme.md файл с описанием проекта и инструкция�
 
 # .env
 
-    # путь по умолчанию для запросов к приложению: domain:port/APP_PATH
-    APP_PATH=fastapi 
+    # Redis variables
+    REDIS_SERVER=localhost
+    REDIS_PORT=6379
+    REDIS_DB=0
+    REDIS_PASSWORD= # password
+
+    # PostgreSQL
+    POSTGRES_DRV=postgresql+asyncpg
+    POSTGRES_DRV_FOR_MIGRATIONS=postgresql
+    POSTGRES_USER=  # username
+    POSTGRES_PASSWORD=  # password
+    POSTGRES_SERVER=localhost
+    POSTGRES_DB=    # db name
+    POSTGRES_PORT=5432
