@@ -45,5 +45,20 @@ class UserRepo(UserRepoInterface):
             
             user_data = select_result.first()
             return user_data
+        
+        
+    async def get_all_users(self):
+        async with a_session() as session:
+            select_result = await session.execute(
+                select(Users)
+            )
+            
+            users_data = select_result.scalars().all()
+            
+            if users_data:
+                return [(user.id, user.login, user.email) for user in users_data]
+            else:
+                return None
+        
             
             
