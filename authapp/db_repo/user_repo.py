@@ -25,6 +25,7 @@ class UserRepo(UserRepoInterface):
             try:
                 await session.add(user_data)
                 await session.commit()
+                await redis_app.set(f"id:{user_data.id}", pickle.dumps(user_data))
             except Exception as e:
                 print(e)
                 
