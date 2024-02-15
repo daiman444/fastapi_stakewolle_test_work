@@ -18,6 +18,7 @@ if not os.environ.get("ENV_LOADED"):
 
 class Settings(BaseSettings):
     TOKEN_LIFE_TIME: int
+    
     # Redis validation
     REDIS_SERVER: str
     REDIS_PORT: str
