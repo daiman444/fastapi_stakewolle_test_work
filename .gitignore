@@ -3,4 +3,4 @@ __pycache__
 venv
 *.pyc
 
-migrations/versions/*.py
+authapp/migrations/versions/*.py
