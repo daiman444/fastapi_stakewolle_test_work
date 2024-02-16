@@ -54,6 +54,8 @@ Readme.md файл с описанием проекта и инструкция�
     $ uvicorn main:app --reload
 
 # .env
+    
+    TOKEN_LIFE_TIME=900 # 900sec=15min
 
     # Redis variables
     REDIS_SERVER=localhost

@@ -24,6 +24,11 @@ async def get_user(user_id: int):
     result: Users = await user_repo.get_user(user_id=user_id)
     print(result.id, result.login, result.email, result.pass_hash, result.get_pass("123123123123"))
     
+
+async def get_all_users():
+    users_data = await user_repo.get_all_users()
+    print(users_data)
+    
     
 async def main():
     await add_user()
