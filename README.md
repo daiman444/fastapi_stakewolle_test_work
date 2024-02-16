@@ -32,6 +32,11 @@ Readme.md файл с описанием проекта и инструкция�
 - [Design](https://pixso.net/app/editor/-MdRp36PScUQrriU4yWAew?showQuickFrame=true&icon_type=1&page-id=0%3A1)
 - [Logic circuit](https://miro.com/app/board/uXjVNvKL4oA=/)
 
+# Систематизация ТЗ
+
+
+
+
 
 # Running
 
