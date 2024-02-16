@@ -33,6 +33,7 @@ async def get_all_users():
 async def main():
     await add_user()
     await get_user(32)
+    await get_all_users()
 
     
 if __name__ == "__main__":
