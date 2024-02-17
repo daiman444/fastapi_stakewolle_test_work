@@ -1,3 +1,5 @@
+import jwt
+
 from fastapi import FastAPI, Response, Request, Header
 from fastapi.templating import Jinja2Templates
 
