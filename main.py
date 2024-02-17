@@ -21,6 +21,8 @@ template = Jinja2Templates(directory="public/templates")
 
 @app.get("/")
 async def root(request: Request):
+    values = request.headers.values()
+    print(values[0])
     return {"message": "Hello World",}
 
 # TODO from here https://stepik.org/lesson/1044674/step/1?unit=1053248
