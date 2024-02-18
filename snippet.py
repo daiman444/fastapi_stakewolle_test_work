@@ -17,7 +17,13 @@ def create_token(data: Dict):
 def decode_token(token: str):
     try:
         payload = jwt.decode(jwt=token, key=SECRET, algorithms=[ALG])
-        return payload.get("login")
+        login = payload.get("login")
+        email = payload.get("email")
+        token_decode = {
+            "login": login,
+            "email": email,
+        }
+        return token_decode
     except Exception as e:
         return e
     
@@ -36,7 +42,8 @@ Token encode:
 {token_encode}
 ###
 Token decode:
-{token_decode}
+login = {token_decode["login"]}
+email = {token_decode["email"]}
     """
     )
 
