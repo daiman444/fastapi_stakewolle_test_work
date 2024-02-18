@@ -25,6 +25,7 @@ async def root(request: Request, ):
     # print(values[0])
     return {"message": "Hello World",}
 
+
 @app.get("/login")
 async def login(login: str, password: str):
     user_data: Users = await user_repo.get_user(login=login)
