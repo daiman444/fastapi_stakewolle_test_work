@@ -1,5 +1,6 @@
 import pickle
 
+
 from api.schemas.settings import settings
 from db.redis import redis_app
 from db.db_session import a_session
@@ -12,7 +13,7 @@ class UserRepoInterface:
     async def add_user(self, user_data: Users):
         pass
     
-    async def get_user(self, user_id):
+    async def get_user(self, login: str):
         pass
     
     
@@ -33,18 +34,20 @@ class UserRepo(UserRepoInterface):
                 return False
             
             
-    async def get_user(self, user_id: Users):
-        user_cache = await redis_app.get(f"id:{user_id}")
+    async def get_user(self, login: str):
+        user_cache = await redis_app.get(f"login:{login}")
         if user_cache:
             return pickle.loads(user_cache)
         
         async with a_session() as session:
             select_result = await session.execute(
-                select(Users).where(Users.id == user_id )
+                select(Users).where(Users.login == login )
             )
-            
             user_data = select_result.first()
-            return user_data
+            if user_data:
+                return user_data
+            else:
+                return None
         
         
     async def get_all_users(self):

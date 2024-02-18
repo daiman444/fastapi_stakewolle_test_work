@@ -20,9 +20,23 @@ template = Jinja2Templates(directory="public/templates")
 
 
 @app.get("/")
-async def root(request: Request):
-    values = request.headers.values()
-    print(values[0])
+async def root(request: Request, ):
+    # values = request.headers.values()
+    # print(values[0])
     return {"message": "Hello World",}
 
-# TODO from here https://stepik.org/lesson/1044674/step/1?unit=1053248
+@app.get("/login")
+async def login(login: str, password: str):
+    user: Users = await user_repo.get_user(login=login)
+    
+    # if user:
+    #     password = user.get_pass(password=password)
+    #     if password:
+    #         return {"message": "accepted"}
+    #     else:
+    #         return {"message": "passvord invalid"}
+    # else:
+    #     return {"message": "user not found"}
+    
+
+# TODO from here https://stepik.org/lesson/1044675/step/1?unit=1053249

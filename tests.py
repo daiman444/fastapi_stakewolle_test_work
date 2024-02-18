@@ -20,9 +20,11 @@ async def add_user():
     print(result)
     
     
-async def get_user(user_id: int):
-    result: Users = await user_repo.get_user(user_id=user_id)
-    print(result.id, result.login, result.email, result.pass_hash, result.get_pass("123123123123"))
+async def get_user_login(login: str):
+    user_data: Users = await user_repo.get_user(login=login)
+    user = user_data[0]
+    print(user.login)
+    #print(result.login, result.email, result.pass_hash, result.get_pass("123123123123"))
     
 
 async def get_all_users():
@@ -32,7 +34,7 @@ async def get_all_users():
     
 async def main():
     await add_user()
-    await get_user(1)
+    await get_user_login("ddd")
     await get_all_users()
 
     
