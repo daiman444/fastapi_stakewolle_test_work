@@ -27,16 +27,15 @@ async def root(request: Request, ):
 
 @app.get("/login")
 async def login(login: str, password: str):
-    user: Users = await user_repo.get_user(login=login)
-    
-    # if user:
-    #     password = user.get_pass(password=password)
-    #     if password:
-    #         return {"message": "accepted"}
-    #     else:
-    #         return {"message": "passvord invalid"}
-    # else:
-    #     return {"message": "user not found"}
+    user_data: Users = await user_repo.get_user(login=login)
+    if user_data:
+        password = user_data.get_pass(password=password)
+        if password:
+            return {"message": "accepted"}
+        else:
+            return {"message": "passvord invalid"}
+    else:
+        return {"message": "user not found"}
     
 
 # TODO from here https://stepik.org/lesson/1044675/step/1?unit=1053249

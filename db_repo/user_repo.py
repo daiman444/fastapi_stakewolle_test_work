@@ -43,7 +43,7 @@ class UserRepo(UserRepoInterface):
             select_result = await session.execute(
                 select(Users).where(Users.login == login )
             )
-            user_data = select_result.first()
+            user_data = select_result.scalars().first()
             if user_data:
                 return user_data
             else:
